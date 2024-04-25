@@ -29,7 +29,7 @@ http.createServer(function(req, res) {
 				var theQuery = {Company: input_search};
 				console.log("theQuery");
 				console.log(theQuery);
-				await collection.find().toArray(function(err, items) {
+				await collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
 					} else {
