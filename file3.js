@@ -19,7 +19,7 @@ http.createServer(function(req, res) {
 		console.log(processquery.inp);*/
 		if (comportick == 'name') {
 			const input_search = processquery.inp;
-
+			res.write("<p>RES TEST2 in if statement on process page</p>");
 			MongoClient.connect(connStr, async function(err, db) {
 				if (err) {
 					return console.log(err);
