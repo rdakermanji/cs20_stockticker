@@ -1,16 +1,19 @@
-//include all the necessary requirements 
-const http = require('http');
-const url = require('url');
 const MongoClient = require('mongodb').MongoClient;
 const connStr = "mongodb+srv://racheldakermanji:iuGimtV9NHbEAiNB@cluster0.dxi5iab.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
+const http = require('http');
+const url = require('url');
 var port = process.env.PORT || 3000;
 
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	if (req.url == "/") {
 		//create the form
-		res.write("<form method = 'get' action = '/process'><input type = 'text' name = 'search' id = 'search' /><br />Search By: <br /><input type = 'radio' name = 'choices' id = 'ticker' value = 'ticker' /><label for = 'ticker'>Stock Ticker Symbol</label><input type = 'radio' name = 'choices' id = 'company' value = 'company' /><label for = 'company'>Company Name</label><br /><input type = 'submit' value = 'Submit' /></form>");
+		res.write("<form method = 'get' action = '/process'>" + 
+			  "<label>How would you like to search? </label><br />" + 
+			  "<input type = 'radio' name = 'choices' id = 'ticker' value = 'ticker' /><label for = 'ticker'>Stock Ticker Symbol</label> +
+			  "<input type = 'radio' name = 'choices' id = 'company' value = 'company' /><label for = 'company'>Company Name</label><br />" +
+			  "<input type = 'text' id = 'search' /><br />" + 
+			  "<input type = 'submit' value = 'Submit' /></form>");
 	} else if ((req.url).includes("/process")) { //have to use includes because has a query string, not necessarily equal
 		const querystring = url.parse(req.url, true).query;
 		const radiobuttonvalue = querystring.choices;
