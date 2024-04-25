@@ -34,6 +34,7 @@ http.createServer(function(req, res) {
 						console.log(err);
 					} else {
 						for (i = 0; i < items.length; i++) {
+							document.write("Hello, world!");
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 						}
 					}
