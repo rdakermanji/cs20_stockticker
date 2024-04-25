@@ -11,7 +11,9 @@ http.createServer(function(req, res) {
 	} else if ((req.url).includes("/process")) { //have to use includes because has a query string, not necessarily equal
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.choices;
-
+		console.log("query"+ processquery);
+		console.log("rad" + comportick);
+		console.log("inp" + processquery.seach);
 		if (comportick == 'name') {
 			const input_search = processquery.search;
 
