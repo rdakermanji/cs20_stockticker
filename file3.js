@@ -23,7 +23,7 @@ http.createServer(function(req, res) {
 					return console.log(err);
 				}
 
-				var dbo = db.db("Stock");
+				var dbo = db.db("Stocks");
 				var collection = dbo.collection("PublicCompanies");
 
 				var theQuery = {Company: input_search};
