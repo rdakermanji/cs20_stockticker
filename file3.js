@@ -10,12 +10,13 @@ http.createServer(function(req, res) {
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 	} else if ((req.url).includes("/process")) { //have to use includes because has a query string, not necessarily equal
 		const processquery = url.parse(req.url, true).query;
-		const comportick = processquery.choices;
-		console.log("query"+ processquery);
-		console.log("rad" + comportick);
-		console.log("inp" + processquery.seach);
+		const comportick = processquery.rad;
+		console.log("query")
+			console.log(processquery);
+		console.log(comportick);
+		console.log(processquery.inp);
 		if (comportick == 'name') {
-			const input_search = processquery.search;
+			const input_search = processquery.inp;
 
 			MongoClient.connect(connStr, async function(err, db) {
 				if (err) {
