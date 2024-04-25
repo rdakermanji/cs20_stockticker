@@ -40,13 +40,14 @@ http.createServer(function(req, res) {
 					if (err) {
 						console.log(err);
 					} else {
+						
+							printitems(items);
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("HERE");
 							res.write("<p>HERE2</p>");
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							//res.end();
-							printitems(items);
 							console.log("after res");
 							//res.write("<p>RES TEST2</p>");
 						}
