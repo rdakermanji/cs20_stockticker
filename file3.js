@@ -38,7 +38,7 @@ http.createServer(function(req, res) {
 				});
 				db.close();
 			});
-		} else {
+		} else { /*
 			const searchterm = querystring.search;
 			MongoClient.connect(connStr, async function(err, db) {
 				if (err) {
@@ -56,7 +56,7 @@ http.createServer(function(req, res) {
 						//only one possible item for company according to spec 
 						console.log(items[0].Company + ", " + items[0].Ticker + ", " + items[0].Price);
 					}
-				});
+				}); */
 				db.close();
 			});
 		}
