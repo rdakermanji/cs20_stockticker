@@ -37,11 +37,11 @@ http.createServer(function(req, res) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							console.log("after res");
+							res.end();
 						}
 					}
 				});
 				db.close();
-				res.end();
 			});
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
