@@ -9,10 +9,10 @@ http.createServer(function(req, res) {
 	if (req.url == "/") {
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 		res.write("<p>RES TEST1</p>");
-		res.end();
+		//res.end();
 	} else if ((req.url).includes("/process")) {
 		res.write("<p>RES TEST on process page</p>");
-		res.end();
+		//res.end();
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
 		/*console.log("query")
@@ -22,7 +22,7 @@ http.createServer(function(req, res) {
 		if (comportick == 'name') {
 			const input_search = processquery.inp;
 			res.write("<p>RES TEST2 in if statement on process page</p>");
-			res.end();
+			//res.end();
 			MongoClient.connect(connStr, async function(err, db) {
 				res.write("test in mogno");
 				res.end();
@@ -49,13 +49,13 @@ http.createServer(function(req, res) {
 							console.log("after res");
 							//res.write("<p>RES TEST2</p>");
 						}
-						res.end();
+						//res.end();
 					}
 				});
 				db.close();
 			});
 			res.write("out of mongo test");
-			res.end();
+			//res.end();
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
 
