@@ -47,6 +47,7 @@ http.createServer(function(req, res) {
 				db.close();
 			});
 			res.write("out of mongo test");
+			res.write(items.length);
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
 
