@@ -13,7 +13,6 @@ http.createServer(function(req, res) {
 		res.write("<p>RES TEST on process page</p>");
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
-		var items = [];
 		/*console.log("query")
 		console.log(processquery);
 		console.log(comportick);
@@ -48,7 +47,6 @@ http.createServer(function(req, res) {
 				db.close();
 			});
 			res.write("out of mongo test");
-			res.write(items.length);
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
 
