@@ -29,8 +29,7 @@ http.createServer(function(req, res) {
 				var theQuery = {Company: input_search};
 				console.log("theQuery");
 				console.log(theQuery);
-				//have to await the search in the data base 
-				/*await collection.find(theQuery).toArray(function(err, items) {
+				await collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
 					} else {
@@ -39,7 +38,7 @@ http.createServer(function(req, res) {
 							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
 						}
 					}
-				});*/
+				});
 				db.close();
 			});
 		} else { /*
