@@ -12,8 +12,8 @@ http.createServer(async function (req, res) {
             res.end();
             return;
         }
-        //const dbo = db.
-        const collection = db.collection('PublicCompanies');
+        var dbo = db.db("Stocks");
+	    var collection = dbo.collection("PublicCompanies");
         
         // Here you can perform operations on the database
         
