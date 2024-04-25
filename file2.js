@@ -4,7 +4,7 @@ const http = require('http');
 const url = require('url');
 var port = process.env.PORT || 3000;
 console.log('here on the form page');
-http.createServer(function(req, res) {
+/*http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	
 	if (req.url  == "/") {
