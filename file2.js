@@ -15,13 +15,12 @@ http.createServer(function(req, res) {
 
 		if (comportick == 'name') {
 			const searchinput = processquery.inp;
-
 			MongoClient.connect(connStr, async function(err, db) {
 				var dbo = db.db("Stock");
 				var collection = dbo.collection("PublicCompanies");
 
 				var theQuery = {Company: searchinput};
-				result = collection.find(theQuery,{Ticker:1, Price:1})
+				var result = collection.find(theQuery,{Ticker:1, Price:1})
 				result.toArray(function(err, items) {
 				  if (err) {
 					console.log("Error: " + err);
@@ -33,28 +32,7 @@ http.createServer(function(req, res) {
 						console.log("Company Name: "+  items[i].Company + " , Stock Ticker: " + items[i].Ticker + " , Price: " + items[i].Price);			
 				  }   
 				  db.close();
-				}); 
-				
-		/*} else {
-			const searchterm = querystring.search;
-			MongoClient.connect(connStr, async function(err, db) {
-				if (err) {
-					return console.log(err);
-				}
-				
-				var dbo = db.db("Stock");
-				var collection = dbo.collection("PublicCompanies");
-
-				var theQuery = {Company: searchterm};
-				await collection.find(theQuery).toArray(function(err, items) {
-					if (err) {
-						console.log(err);
-					} else { 
-						console.log(items[0].Company + ", " + items[0].Ticker + ", " + items[0].Price);
-					}
-				});
-				db.close();
-			});*/
+				}); 		
 		}
 	}
 	res.end();
