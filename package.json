@@ -12,6 +12,9 @@
 },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "mongodb": "4.0"
+  },
   "bugs": {
   "url": ""
 },
