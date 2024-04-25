@@ -63,34 +63,12 @@ http.createServer(function(req, res) {
 						console.log(items.length);
 						console.log('attemp db')
 						for (i = 0; i < items.length; i++) {
-							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
+							console.log("Company: " + items[i].Company + ", Ticker:" + items[i].Ticker + ", Price" + items[i].Price);
 						}
 					}
 				});
 				db.close();
 			});
-		}
-		else { /*
-			const searchterm = querystring.search;
-			MongoClient.connect(connStr, async function(err, db) {
-				if (err) {
-					return console.log(err);
-				}
-				
-				var dbo = db.db("Stock");
-				var collection = dbo.collection("PublicCompanies");
-
-				var theQuery = {Company: searchterm};
-				await collection.find(theQuery).toArray(function(err, items) {
-					if (err) {
-						console.log(err);
-					} else {
-						//only one possible item for company according to spec 
-						console.log(items[0].Company + ", " + items[0].Ticker + ", " + items[0].Price);
-					}
-				}); */
-				db.close();
-			//});
 		}
 	}
 	res.end();
