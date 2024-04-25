@@ -5,7 +5,7 @@ const url = require('url');
 var port = process.env.PORT || 3000;
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	path = req.url;
+	//path = req.url;
 	if (req.url  == "/") {
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 	} else if ((req.url).includes("/process")) { 
