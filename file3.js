@@ -33,6 +33,7 @@ http.createServer(function(req, res) {
 					if (err) {
 						console.log(err);
 					} else {
+						console.log(items.length);
 						console.log('attemp db')
 						for (i = 0; i < items.length; i++) {
 							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
