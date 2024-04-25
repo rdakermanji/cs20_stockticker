@@ -12,7 +12,7 @@ http.createServer(function(req, res) {
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
 		console.log("query")
-			console.log(processquery);
+		console.log(processquery);
 		console.log(comportick);
 		console.log(processquery.inp);
 		if (comportick == 'name') {
@@ -27,8 +27,10 @@ http.createServer(function(req, res) {
 				var collection = dbo.collection("PublicCompanies");
 
 				var theQuery = {Company: input_search};
+				console.log("theQuery");
+				console.log(theQuery);
 				//have to await the search in the data base 
-				await collection.find(theQuery).toArray(function(err, items) {
+				/*await collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
 					} else {
@@ -37,7 +39,7 @@ http.createServer(function(req, res) {
 							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
 						}
 					}
-				});
+				});*/
 				db.close();
 			});
 		} else { /*
