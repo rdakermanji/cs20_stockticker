@@ -42,7 +42,35 @@ http.createServer(function(req, res) {
 				});
 				db.close();
 			});
-		} else { /*
+		} if (comportick == 'ticker') {
+			const input_search = processquery.inp;
+
+			MongoClient.connect(connStr, async function(err, db) {
+				if (err) {
+					return console.log(err);
+				}
+
+				var dbo = db.db("Stocks");
+				var collection = dbo.collection("PublicCompanies");
+
+				var theQuery = {Ticker: input_search};
+				console.log("theQuery");
+				console.log(theQuery);
+				await collection.find(theQuery).toArray(function(err, items) {
+					if (err) {
+						console.log(err);
+					} else {
+						console.log(items.length);
+						console.log('attemp db')
+						for (i = 0; i < items.length; i++) {
+							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
+						}
+					}
+				});
+				db.close();
+			});
+		}
+		else { /*
 			const searchterm = querystring.search;
 			MongoClient.connect(connStr, async function(err, db) {
 				if (err) {
