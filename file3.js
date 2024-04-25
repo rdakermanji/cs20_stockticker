@@ -39,6 +39,8 @@ http.createServer(function(req, res) {
 					} else {
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
+							res.write("HERE");
+							res.write("<p>HERE2</p>");
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							//res.end();
 							console.log("after res");
