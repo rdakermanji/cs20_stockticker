@@ -21,6 +21,7 @@ http.createServer(function(req, res) {
 			const input_search = processquery.inp;
 			res.write("<p>RES TEST2 in if statement on process page</p>");
 			MongoClient.connect(connStr, async function(err, db) {
+				res.write("test in mogno");
 				if (err) {
 					return console.log(err);
 				}
