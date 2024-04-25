@@ -41,6 +41,7 @@ http.createServer(function(req, res) {
 					}
 				});
 				db.close();
+				res.end();
 			});
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
