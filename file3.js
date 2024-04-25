@@ -13,6 +13,7 @@ http.createServer(function(req, res) {
 		res.write("<p>RES TEST on process page</p>");
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
+		var items = [];
 		/*console.log("query")
 		console.log(processquery);
 		console.log(comportick);
