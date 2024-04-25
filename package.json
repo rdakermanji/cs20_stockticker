@@ -1,5 +1,5 @@
 {
-  "name": "helloapp",
+  "name": "cs20stockticker",
   "version": "1.0.0",
   "description": "node app ",
   "main": "hello.js",
