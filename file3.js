@@ -82,5 +82,7 @@ http.createServer(function(req, res) {
 function printitems(items) {
 	for (i = 0; i < items.length; i++) {
 		res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
+		console.log('in print');
 	}
+	res.end();
 };
