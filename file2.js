@@ -3,19 +3,17 @@ const connStr = "mongodb+srv://racheldakermanji:iuGimtV9NHbEAiNB@cluster0.dxi5ia
 const http = require('http');
 const url = require('url');
 var port = process.env.PORT || 3000;
-
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	if (req.url == "/") {
+	path = req.url;
+	if (path  == "/") {
+		console.log('here');
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
-		//res.write("<form method = 'get' action = '/process'><input type = 'text' name = 'search' id = 'search' /><br />Search By: <br /><input type = 'radio' name = 'choices' id = 'ticker' value = 'ticker' /><label for = 'ticker'>Stock Ticker Symbol</label><input type = 'radio' name = 'choices' id = 'company' value = 'company' /><label for = 'company'>Company Name</label><br /><input type = 'submit' value = 'Submit' /></form>");
-		/*res.write("<form method = 'get' action = '/process'>" + 
-			  "<label>How would you like to search? </label><br />" + 
-			  "<input type = 'radio' name = 'choices' id = 'ticker' value = 'ticker' /><label for = 'ticker'>Stock Ticker Symbol</label> +
-			  "<input type = 'radio' name = 'choices' id = 'company' value = 'company' /><label for = 'company'>Company Name</label><br />" +
-			  "<input type = 'text' id = 'search' /><br />" + 
-			  "<input type = 'submit' value = 'Submit' /></form>");*/
-	} else if ((req.url).includes("/process")) { //have to use includes because has a query string, not necessarily equal
+	} else if ((path).includes("/process")) { 
+		console.log('here2');
+		var queryString = window.location.search;
+            var params = new URLSearchParams(queryString);
+		console.log(params);
 		const querystring = url.parse(req.url, true).query;
 		const radiobuttonvalue = querystring.choices;
 
