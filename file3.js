@@ -40,7 +40,6 @@ http.createServer(function(req, res) {
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							console.log("after res");
 							res.write("<p>RES TEST2</p>");
-							res.end();
 						}
 					}
 				});
