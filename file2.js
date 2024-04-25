@@ -35,6 +35,6 @@ http.createServer(function(req, res) {
 				  db.close();
 				}); 		
 		}
-	}
+	} }
 	res.end();
 }).listen(port); 
