@@ -40,7 +40,6 @@ http.createServer(function(req, res) {
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-							printitems(items);
 							console.log("after res");
 							res.write("<p>RES TEST2</p>");
 						}
@@ -79,13 +78,3 @@ http.createServer(function(req, res) {
 	res.end();
 }).listen(port); 
 
-function printitems(items) {
-	http.createServer(function(req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	for (i = 0; i < items.length; i++) {
-		res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-		console.log('in print');
-	}
-	res.end();
-	}
-};
