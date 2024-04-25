@@ -33,15 +33,8 @@ http.createServer(function(req, res) {
 					if (err) {
 						console.log(err);
 					} else {
-						/*console.log(items.length);
-						console.log('attemp db')*/
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-							http.createServer(function(req, res) {
-								res.writeHead(200, {'Content-Type': 'text/html'});
-								res.write("<p>HERE</p>");
-								res.write("<p>" + "Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "</p>");
-							}
 						}
 					}
 				});
