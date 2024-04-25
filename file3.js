@@ -12,6 +12,7 @@ http.createServer(function(req, res) {
 		res.end();
 	} else if ((req.url).includes("/process")) {
 		res.write("<p>RES TEST on process page</p>");
+		res.end();
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
 		/*console.log("query")
@@ -21,8 +22,10 @@ http.createServer(function(req, res) {
 		if (comportick == 'name') {
 			const input_search = processquery.inp;
 			res.write("<p>RES TEST2 in if statement on process page</p>");
+			res.end();
 			MongoClient.connect(connStr, async function(err, db) {
 				res.write("test in mogno");
+				res.end();
 				if (err) {
 					return console.log(err);
 				}
@@ -46,8 +49,8 @@ http.createServer(function(req, res) {
 							console.log("after res");
 							//res.write("<p>RES TEST2</p>");
 						}
+						res.end();
 					}
-					res.end();
 				});
 				db.close();
 			});
