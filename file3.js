@@ -76,3 +76,9 @@ http.createServer(function(req, res) {
 	}
 	res.end();
 }).listen(port); 
+
+function printitems(items) {
+	for (i = 0; i < items.length; i++) {
+		res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
+	}
+};
