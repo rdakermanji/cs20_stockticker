@@ -5,40 +5,37 @@ const url = require('url');
 var port = process.env.PORT || 3000;
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	//path = req.url;
+	
 	if (req.url  == "/") {
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 	} else if ((req.url).includes("/process")) { 
-		const querystring = url.parse(req.url, true).query;
+		const processquery = url.parse(req.url, true).query;
 		//window.alert(querystring)
-		const radiobuttonvalue = querystring.choices;
+		const comportick = processquery.rad;
 
-		if (radiobuttonvalue == 'ticker') {
-			const searchterm = querystring.search;
+		if (comportick == 'name') {
+			const searchinput = processquery.inp;
 
 			MongoClient.connect(connStr, async function(err, db) {
-				if (err) {
-					return console.log(err);
-				}
-
 				var dbo = db.db("Stock");
 				var collection = dbo.collection("PublicCompanies");
 
-				var theQuery = {Ticker: searchterm};
-				//have to await the search in the data base 
-				await collection.find(theQuery).toArray(function(err, items) {
-					if (err) {
-						console.log(err);
-					} else {
-						//ticker has potentially many matches 
-						for (i = 0; i < items.length; i++) {
-							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
-						}
-					}
-				});
-				db.close();
-			});
-		} else {
+				var theQuery = {Company: searchinput};
+				result = collection.find(theQuery,{Ticker:1, Price:1})
+				result.toArray(function(err, items) {
+				  if (err) {
+					console.log("Error: " + err);
+				  } 
+				  else 
+				  {
+					console.log("Companies: ");
+					for (i=0; i<items.length; i++)
+						console.log("Company Name: "+  items[i].Company + " , Stock Ticker: " + items[i].Ticker + " , Price: " + items[i].Price);			
+				  }   
+				  db.close();
+				}); 
+				
+		/*} else {
 			const searchterm = querystring.search;
 			MongoClient.connect(connStr, async function(err, db) {
 				if (err) {
@@ -52,14 +49,13 @@ http.createServer(function(req, res) {
 				await collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
-					} else {
-						//only one possible item for company according to spec 
+					} else { 
 						console.log(items[0].Company + ", " + items[0].Ticker + ", " + items[0].Price);
 					}
 				});
 				db.close();
-			});
+			});*/
 		}
 	}
 	res.end();
-}).listen(port); //listen on port for changes; initially did 8080 for testing
+}).listen(port); 
