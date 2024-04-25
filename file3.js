@@ -3,7 +3,7 @@ const connStr = "mongodb+srv://racheldakermanji:iuGimtV9NHbEAiNB@cluster0.dxi5ia
 const http = require('http');
 const url = require('url');
 var port = process.env.PORT || 3000;
-
+console.log("HERE");
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	if (req.url == "/") {
