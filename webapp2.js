@@ -21,5 +21,10 @@ http.createServer(function (req, res) {
 	var quer = {};
         quer[n] = input;
         console.log(quer);
+
+	const client = new MongoClient(uri);
+        var database = client.db("Stocks");
+        var pc = database.collection("PC2");
+	client.close();
   }
 }).listen(8080);
