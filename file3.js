@@ -11,10 +11,10 @@ http.createServer(function(req, res) {
 	} else if ((req.url).includes("/process")) { //have to use includes because has a query string, not necessarily equal
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
-		console.log("query")
+		/*console.log("query")
 		console.log(processquery);
 		console.log(comportick);
-		console.log(processquery.inp);
+		console.log(processquery.inp);*/
 		if (comportick == 'name') {
 			const input_search = processquery.inp;
 
@@ -33,7 +33,7 @@ http.createServer(function(req, res) {
 					if (err) {
 						console.log(err);
 					} else {
-						//ticker has potentially many matches 
+						console.log('attemp db')
 						for (i = 0; i < items.length; i++) {
 							console.log(items[i].Company + ", " + items[i].Ticker + ", " + items[i].Price);
 						}
