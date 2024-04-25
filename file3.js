@@ -70,4 +70,4 @@ http.createServer(function(req, res) {
 		}
 	}
 	res.end();
-}).listen(port); //listen on port for changes; initially did 8080 for testing
+}).listen(port); 
