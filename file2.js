@@ -7,10 +7,8 @@ http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	path = req.url;
 	if (path  == "/") {
-		console.log('here');
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 	} else if ((path).includes("/process")) { 
-		console.log('here2');
 		const querystring = url.parse(req.url, true).query;
 		const radiobuttonvalue = querystring.choices;
 
