@@ -39,6 +39,7 @@ http.createServer(function(req, res) {
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 						}
 					}
+					console.log(items[0].Ticker + "test for api");
 					db.close();
 				res.end();
 				});
