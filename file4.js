@@ -14,8 +14,7 @@ function apivals(ticker) {
 	.then (datafetch => datafetch.text())
 	.then (data => {
 	    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
-		console.log(v);
-		res.write('inside apivals');
+		//console.log(v);
 		return v;
 	})
 	.catch (error => console.log('ERROR:' + error))
@@ -54,13 +53,14 @@ http.createServer(function(req, res) {
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
+							var comp = Items[i].Company; var tick1 = items[i].Ticker;
 
 							apivals(items[0].Ticker).then(result => {
 								console.log('result' + result);
-								console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + result);
-								res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + result);
+								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick + ", Price: " + result);
+								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick + ", Price: " + result);
 								res.write("<br>");
-								res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + result + "'); </script>");
+								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick + ", Price: " + result + "'); </script>");
 			
 							})
 						}
