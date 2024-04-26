@@ -8,6 +8,7 @@ function apivals(ticker) {
 	var apiurl = "https://api.polygon.io/v2/aggs/ticker/";
 	var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
 	var final = apiurl + ticker + apiurl_end;
+	console.log('in apivals ' + ticker);
 	//console.log('final' + final);
 	datafetch = fetch(final)
 	.then (datafetch => datafetch.text())
