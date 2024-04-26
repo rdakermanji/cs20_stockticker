@@ -37,9 +37,10 @@ http.createServer(function(req, res) {
 							res.write('HERE');
 						}
 					}
-				});
-				db.close();
+					db.close();
 				res.end();
+				});
+				
 			});
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
@@ -63,8 +64,10 @@ http.createServer(function(req, res) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 						}
 					}
+					db.close();
+				res.end();
 				});
-				db.close();
+
 			});
 		}
 	}
