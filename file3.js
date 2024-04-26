@@ -43,7 +43,8 @@ http.createServer(function(req, res) {
 						
 						items.forEach(item => {
 							console.log('for each');
-					            res.write("<p>Company: " + item.company_name + ", Ticker Symbol: " + item.ticker_symbol + ", Stock Price: " + item.stock_price + "</p>");
+							console.log('item ' + item.Company);
+					            res.write("<p>Company: " + item.Company + ", Ticker Symbol: " + item.Ticker + ", Stock Price: " + item.Price + "</p>");
 					        });
 					        res.end();
 						for (i = 0; i < items.length; i++) {
