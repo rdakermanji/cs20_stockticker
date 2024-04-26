@@ -20,7 +20,7 @@ http.createServer(function(req, res) {
 				return console.log(err);
 			}
 
-			var dbo = db.db("Stock");
+			var dbo = db.db("Stocks");
 			var collection = dbo.collection("PublicCompanies");
 
 			if (radiobuttonvalue == 'ticker') { //different query for company vs. ticker
