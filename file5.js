@@ -13,7 +13,7 @@ http.createServer(function(req, res) {
 		const comportick = processquery.rad;
 		const input_search = processquery.inp;
     
-		MongoClient.connect(connStr, async function(err, db) {
+		MongoClient.connect(connStr, function(err, db) {
 			if (err) {
 				return console.log(err);
 			}
