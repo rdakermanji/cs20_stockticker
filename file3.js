@@ -41,7 +41,10 @@ http.createServer(function(req, res) {
 						console.log(err);
 					} else {
 						
-							printitems(items);
+						items.forEach(item => {
+					            res.write("<p>Company: " + item.company_name + ", Ticker Symbol: " + item.ticker_symbol + ", Stock Price: " + item.stock_price + "</p>");
+					        });
+					        res.end();
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("HERE");
