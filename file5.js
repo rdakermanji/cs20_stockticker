@@ -13,7 +13,7 @@ http.createServer(function(req, res) {
 		const comportick = processquery.rad;
 		const input_search = processquery.inp;
     
-		MongoClient.connect(connStr, async function(err, db) {
+		/*MongoClient.connect(connStr, async function(err, db) {
 			if (err) {
 				return console.log(err);
 			}
@@ -37,9 +37,9 @@ http.createServer(function(req, res) {
 					}
 				}
 				});
-				db.close();
-				res.end();
-			});
+			db.close();
+			res.end();
+			});*/
 		}
 	/*}
 	res.end();*/	
