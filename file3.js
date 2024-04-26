@@ -90,12 +90,6 @@ http.createServer(function(req, res) {
 	}
 	res.end();
 
-	function printitems(items) {
-		for (i = 0; i < items.length; i++) {
-			res.write("in print Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-			console.log("in print Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-		}
-	};
 	
 }).listen(port); 
 
