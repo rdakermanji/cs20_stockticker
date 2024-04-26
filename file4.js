@@ -33,7 +33,7 @@ http.createServer(function(req, res) {
 					} else {
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-							res.write('HERE');
+							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 						}
 					}
 					db.close();
@@ -61,7 +61,7 @@ http.createServer(function(req, res) {
 					} else {
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-							res.write('ticker');
+							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 						}
 					}
 					db.close();
