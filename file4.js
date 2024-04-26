@@ -37,9 +37,6 @@ http.createServer(function(req, res) {
 							// res.write("<br>");
 							// res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
-						}
-					}
-					console.log(items[0].Ticker + "test for api");
 							var apiurl = "https://api.polygon.io/v2/aggs/ticker/";
 							var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
 							var ticker = items[0].Ticker;
@@ -57,6 +54,8 @@ http.createServer(function(req, res) {
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v + "'); </script>");
 							})
 							.catch (error => console.log(error))
+						}
+					}
 					
 					db.close();
 				res.end();
