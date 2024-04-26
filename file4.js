@@ -53,7 +53,7 @@ http.createServer(function(req, res) {
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
-							var comp = Items[i].Company; var tick1 = items[i].Ticker;
+							var comp = items[i].Company; var tick1 = items[i].Ticker;
 
 							apivals(items[0].Ticker).then(result => {
 								console.log('result' + result);
