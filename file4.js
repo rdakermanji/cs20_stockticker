@@ -42,8 +42,8 @@ http.createServer(function(req, res) {
 							var ticker = items[0].Ticker; var comp = items[i].Company; 
 							var final = apiurl + ticker + apiurl_end;
 							console.log('final' + final);
-							res1 = fetch(final)
 							var v = 0;
+							res1 = fetch(final)
 							.then (res1 => res1.text())
 							.then (data => {
 							    var d1 = JSON.parse(data); var r = d1['results']; v = r[0]; v = v['c'];
