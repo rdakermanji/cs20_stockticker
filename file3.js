@@ -42,6 +42,7 @@ http.createServer(function(req, res) {
 					} else {
 						
 						items.forEach(item => {
+							console.log('for each');
 					            res.write("<p>Company: " + item.company_name + ", Ticker Symbol: " + item.ticker_symbol + ", Stock Price: " + item.stock_price + "</p>");
 					        });
 					        res.end();
