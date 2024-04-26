@@ -4,6 +4,20 @@ const http = require('http');
 const url = require('url');
 var port = process.env.PORT || 3000;
 
+function apivals(ticker) {
+	var apiurl = "https://api.polygon.io/v2/aggs/ticker/";
+	var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
+	var final = apiurl + ticker + apiurl_end;
+	//console.log('final' + final);
+	datafetch = fetch(final)
+	.then (datafetch => datafetch.text())
+	.then (data => {
+	    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
+		return v;
+	})
+	.catch (error => console.log('ERROR:' + error))
+}
+
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	if (req.url == "/") {
@@ -37,23 +51,6 @@ http.createServer(function(req, res) {
 							// res.write("<br>");
 							// res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
-							var apiurl = "https://api.polygon.io/v2/aggs/ticker/";
-							var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
-							var ticker = items[0].Ticker; var comp = items[i].Company; 
-							var final = apiurl + ticker + apiurl_end;
-							//console.log('final' + final);
-							datafetch = fetch(final)
-							.then (datafetch => datafetch.text())
-							.then (data => {
-							    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
-								//console.log('v' + v);
-								res.write("<br> API VALUES-> Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
-								res.write("<br>");
-								res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
-								console.log("API VALUE-> Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
-							    //console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
-							})
-							.catch (error => console.log('ERROR:' + error))
 						}
 					}
 					
