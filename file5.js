@@ -1,3 +1,8 @@
+const MongoClient = require('mongodb').MongoClient;
+const connStr = "mongodb+srv://racheldakermanji:iuGimtV9NHbEAiNB@cluster0.dxi5iab.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const http = require('http');
+const url = require('url');
+var port = process.env.PORT || 3000;
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 
