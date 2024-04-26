@@ -13,7 +13,7 @@ http.createServer(function(req, res) {
 		const comportick = processquery.rad;
 		const input_search = processquery.inp;
     
-		/*MongoClient.connect(connStr, async function(err, db) {
+		MongoClient.connect(connStr, async function(err, db) {
 			if (err) {
 				return console.log(err);
 			}
@@ -25,7 +25,7 @@ http.createServer(function(req, res) {
 				theQuery = {Company: input_search};
 			}
 			if (comportick == "ticker) {
-			    theQuery = {Ticker: input_search}';
+			    theQuery = {Ticker: input_search};
 			console.log("theQuery");
 			console.log(theQuery);
 			await collection.find(theQuery).toArray(function(err, items) {
@@ -39,7 +39,7 @@ http.createServer(function(req, res) {
 				});
 			db.close();
 			res.end();
-			});*/
+			});
 		}
 	/*}
 	res.end();*/	
