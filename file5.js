@@ -29,7 +29,7 @@ http.createServer(function(req, res) {
 			}
 			console.log("theQuery");
 			console.log(theQuery);
-			await collection.find(theQuery).toArray(function(err, items) {
+			collection.find(theQuery).toArray(function(err, items) {
 				if (err) {
 					console.log(err);
 				} else {
