@@ -43,9 +43,10 @@ http.createServer(function(req, res) {
 							var final = apiurl + ticker + apiurl_end;
 							console.log('final' + final);
 							res1 = fetch(final)
+							var v = 0;
 							.then (res1 => res1.text())
 							.then (data => {
-							    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
+							    var d1 = JSON.parse(data); var r = d1['results']; v = r[0]; v = v['c'];
 								console.log('v' + v);
 								console.log("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
 							    //console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
@@ -54,6 +55,7 @@ http.createServer(function(req, res) {
 							res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
 							})
 							.catch (error => console.log('ERROR:' + error))
+							console.log(v);
 						}
 					}
 					
