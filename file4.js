@@ -8,13 +8,10 @@ function apivals(ticker) {
 	var apiurl = "https://api.polygon.io/v2/aggs/ticker/";
 	var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
 	var final = apiurl + ticker + apiurl_end;
-	console.log('in apivals ' + ticker);
-	//console.log('final' + final);
 	return datafetch = fetch(final)
 	.then (datafetch => datafetch.text())
 	.then (data => {
 	    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
-		//console.log(v);
 		return v;
 	})
 	.catch (error => console.log('ERROR:' + error))
@@ -25,14 +22,12 @@ http.createServer(function(req, res) {
 	if (req.url == "/") {
 		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 	} else if ((req.url).includes("/process")) {
-		//res.write("<p>file4.js</p>");
 		const processquery = url.parse(req.url, true).query;
 		const comportick = processquery.rad;
     
 		if (comportick == 'name') {
 			const input_search = processquery.inp;
 			MongoClient.connect(connStr, function(err, db) {
-				//res.write("test in mogno");
 				if (err) {
 					return console.log(err);
 				}
@@ -54,17 +49,14 @@ http.createServer(function(req, res) {
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
-							var resultapi;
 							apivals(items[0].Ticker).then(result => {
-								resultapi = result;
-								//console.log('result' + result);
 								console.log(comp + ' ' + tick1);
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("<br>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
-			
 							})
+							res.end();
 						}
 					}
 					
