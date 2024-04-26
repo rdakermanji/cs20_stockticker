@@ -57,6 +57,7 @@ http.createServer(function(req, res) {
 
 							apivals(items[0].Ticker).then(result => {
 								//console.log('result' + result);
+								console.log(comp + ' ' + tick1);
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("<br>");
