@@ -14,6 +14,7 @@ function apivals(ticker) {
 	.then (datafetch => datafetch.text())
 	.then (data => {
 	    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
+		console.log(v);
 		return v;
 	})
 	.catch (error => console.log('ERROR:' + error))
