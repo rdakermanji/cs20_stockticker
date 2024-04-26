@@ -17,7 +17,6 @@ http.createServer(function(req, res) {
 			const input_search = processquery.inp;
 			MongoClient.connect(connStr, function(err, db) {
 				res.write("test in mogno");
-				res.end();
 				if (err) {
 					return console.log(err);
 				}
