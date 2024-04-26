@@ -38,9 +38,9 @@ http.createServer(function(req, res) {
 						res.write('<p>HERE</p>');
 					}
 				}
-				});
-			db.close();
+				db.close();
 			res.end();
+				});
 			});
 		}
 	/*}
