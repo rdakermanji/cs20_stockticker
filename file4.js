@@ -47,7 +47,7 @@ http.createServer(function(req, res) {
 							.then (data => {
 							    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
 								//console.log('v' + v);
-								res.write("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
+								res.write("<br> API VALUES-> Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
 								res.write("<br>");
 								res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
 								console.log("API VALUE-> Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
