@@ -42,16 +42,16 @@ http.createServer(function(req, res) {
 							var ticker = items[0].Ticker; var comp = items[i].Company; 
 							var final = apiurl + ticker + apiurl_end;
 							//console.log('final' + final);
-							res1 = fetch(final)
-							.then (res1 => res1.text())
+							datafetch = fetch(final)
+							.then (datafetch => datafetch.text())
 							.then (data => {
 							    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
 								//console.log('v' + v);
+								res.write("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
+								res.write("<br>");
+								res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
 								console.log("API VALUE-> Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
 							    //console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
-							res.write("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
-							res.write("<br>");
-							res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
 							})
 							.catch (error => console.log('ERROR:' + error))
 						}
