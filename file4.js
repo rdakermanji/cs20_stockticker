@@ -15,6 +15,7 @@ function apivals(ticker) {
 	.then (data => {
 	    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
 		console.log(v);
+		res.write('inside apivals);
 		return v;
 	})
 	.catch (error => console.log('ERROR:' + error))
@@ -53,9 +54,6 @@ http.createServer(function(req, res) {
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
-
-							//var e = apivals(items[0].Ticker);
-							//console.log('here e ' + e);
 
 							apivals(items[0].Ticker).then(result => {
 								console.log('result' + result);
