@@ -50,15 +50,20 @@ http.createServer(function(req, res) {
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
-							// res.write("<br>");
-							// res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
+							res.write("<br>");
+							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 
 							//var e = apivals(items[0].Ticker);
 							//console.log('here e ' + e);
 
 							apivals(items[0].Ticker).then(result => {
-							    console.log('result' + result);
+								console.log('result' + result);
+								console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + result);
+								res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + result);
+								res.write("<br>");
+								res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + result + "'); </script>");
+			
 							})
 						}
 					}
