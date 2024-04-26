@@ -10,7 +10,7 @@ function apivals(ticker) {
 	var final = apiurl + ticker + apiurl_end;
 	console.log('in apivals ' + ticker);
 	//console.log('final' + final);
-	datafetch = fetch(final)
+	return datafetch = fetch(final)
 	.then (datafetch => datafetch.text())
 	.then (data => {
 	    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
