@@ -54,8 +54,12 @@ http.createServer(function(req, res) {
 							// res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 
-							var e = apivals(items[0].Ticker);
-							console.log('here e ' + e);
+							//var e = apivals(items[0].Ticker);
+							//console.log('here e ' + e);
+
+							apivals(items[0].Ticker).then(result => {
+							    console.log('result' + result);
+							})
 						}
 					}
 					
