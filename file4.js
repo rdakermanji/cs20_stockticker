@@ -15,7 +15,7 @@ http.createServer(function(req, res) {
     
 		if (comportick == 'name') {
 			const input_search = processquery.inp;
-			MongoClient.connect(connStr, async function(err, db) {
+			MongoClient.connect(connStr, function(err, db) {
 				res.write("test in mogno");
 				res.end();
 				if (err) {
@@ -28,21 +28,23 @@ http.createServer(function(req, res) {
 				var theQuery = {Company: input_search};
 				console.log("theQuery");
 				console.log(theQuery);
-				await collection.find(theQuery).toArray(function(err, items) {
+				collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
 					} else {
 						for (i = 0; i < items.length; i++) {
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
+							res.write('HERE');
 						}
 					}
 				});
 				db.close();
+				res.end();
 			});
 		} if (comportick == 'ticker') {
 			const input_search = processquery.inp;
 
-			MongoClient.connect(connStr, async function(err, db) {
+			MongoClient.connect(connStr, function(err, db) {
 				if (err) {
 					return console.log(err);
 				}
@@ -53,7 +55,7 @@ http.createServer(function(req, res) {
 				var theQuery = {Ticker: input_search};
 				console.log("theQuery");
 				console.log(theQuery);
-				await collection.find(theQuery).toArray(function(err, items) {
+				collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
 					} else {
