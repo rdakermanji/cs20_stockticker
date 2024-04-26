@@ -49,11 +49,13 @@ http.createServer(function(req, res) {
 								console.log('v' + v);
 								console.log("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
 							    //console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
-							res.write("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
-							res.write("<br>");
-							res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
+							//res.write("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
+							//res.write("<br>");
+							//res.write("<script language=javascript>console.log('Company: " + comp + ", Ticker: " + ticker + ", Price: " + v + "'); </script>");
 							})
 							.catch (error => console.log('ERROR:' + error))
+
+							console.log('v out of catch' + v);
 						}
 					}
 					
