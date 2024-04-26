@@ -51,7 +51,7 @@ http.createServer(function(req, res) {
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v + "'); </script>");
 							})
-							.catch (error => console.log(error))
+							.catch (error => console.log('ERROR:' + error))
 						}
 					}
 					
