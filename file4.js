@@ -41,11 +41,12 @@ http.createServer(function(req, res) {
 							var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
 							var ticker = items[0].Ticker;
 							var final = apiurl + ticker + apiurl_end;
-							
+							console.log('final' + final);
 							res1 = fetch(final)
 							.then (res1 => res1.text())
 							.then (data => {
 							    d1 = JSON.parse(data); r = d1['results']; v = r[0]; v = v['c'];
+								console.log('v' + v);
 							    console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
 							res.write("<br>");
