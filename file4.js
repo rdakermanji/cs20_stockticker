@@ -45,7 +45,7 @@ http.createServer(function(req, res) {
 							res1 = fetch(final)
 							.then (res1 => res1.text())
 							.then (data => {
-							    d1 = JSON.parse(data); r = d1['results']; v = r[0]; v = v['c'];
+							    var d1 = JSON.parse(data); var r = d1['results']; var v = r[0]; v = v['c'];
 								console.log('v' + v);
 								console.log("Company: " + comp + ", Ticker: " + ticker + ", Price: " + v);
 							    //console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
