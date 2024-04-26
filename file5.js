@@ -3,49 +3,44 @@ const connStr = "mongodb+srv://racheldakermanji:iuGimtV9NHbEAiNB@cluster0.dxi5ia
 const http = require('http');
 const url = require('url');
 var port = process.env.PORT || 3000;
+
 http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-
 	if (req.url == "/") {
-		//create the form 
-		res.write("<form method = 'get' action = '/process'><input type = 'text' name = 'search' id = 'search' /><br />Search By: <br /><input type = 'radio' name = 'choices' id = 'ticker' value = 'ticker' /><label for = 'ticker'>Stock Ticker Symbol</label><input type = 'radio' name = 'choices' id = 'company' value = 'company' /><label for = 'company'>Company Name</label><br /><input type = 'submit' value = 'Submit' /></form>");
-		res.end();
+		res.write('<form method="get" action="process.js"><label for="radio1">What kind of search?</label><input type="radio" name="rad" value="ticker">Ticker </input><input type="radio" name="rad" value="name">Company Name </input><br><br><label for="str1">Enter a ticker symbol or company name:&nbsp;&nbsp;</label><input type="text" name="inp"></input><br><br><input id="submit" type="submit" value="Submit"></form>');
 	} else if ((req.url).includes("/process")) {
-		const querystring = url.parse(req.url, true).query;
-		const radiobuttonvalue = querystring.choices; //get what the radio button says
-		const searchterm = querystring.search;
-
-		MongoClient.connect(connStr, function(err, db) {
+		const processquery = url.parse(req.url, true).query;
+		const comportick = processquery.rad;
+		const input_search = processquery.inp;
+    
+		MongoClient.connect(connStr, async function(err, db) {
 			if (err) {
 				return console.log(err);
 			}
 
 			var dbo = db.db("Stocks");
 			var collection = dbo.collection("PublicCompanies");
-
-			if (radiobuttonvalue == 'ticker') { //different query for company vs. ticker
-				var theQuery = {Ticker: searchterm};
-			} else {
-				var theQuery = {Company: searchterm};
+			var theQuery = {};
+			if (comportick == "name") {
+				theQuery = {Company: input_search};
 			}
-
-			collection.find(theQuery).toArray(function(err, items) {
+			if (comportick == "ticker) {
+			    theQuery = {Ticker: input_search}';
+			console.log("theQuery");
+			console.log(theQuery);
+			await collection.find(theQuery).toArray(function(err, items) {
 				if (err) {
-					return console.log(err);
-				} 
-
-				items.forEach((item) =>{
-					//logging the results for each item 
-					console.log(item.Company + ", " + item.Ticker + ", " + item.Price);
-
-					//writing the results for each item
-					res.write("" + item.Company + ", " + item.Ticker + ", " + item.Price);
-					res.write("<br />");
+					console.log(err);
+				} else {
+					for (i = 0; i < items.length; i++) {
+						console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
+					}
+				}
 				});
-
 				db.close();
-				res.end(); //need to end the response here when we go to this page 
+				res.end();
 			});
-		});
+		}
 	}
-}).listen(port); //listen on the port
+	res.end();	
+}).listen(port); 
