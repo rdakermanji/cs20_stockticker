@@ -24,8 +24,9 @@ http.createServer(function(req, res) {
 			if (comportick == "name") {
 				theQuery = {Company: input_search};
 			}
-			if (comportick == "ticker) {
+			if (comportick == "ticker") {
 			    theQuery = {Ticker: input_search};
+			}
 			console.log("theQuery");
 			console.log(theQuery);
 			await collection.find(theQuery).toArray(function(err, items) {
