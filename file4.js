@@ -39,7 +39,7 @@ http.createServer(function(req, res) {
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							var apiurl = "https://api.polygon.io/v2/aggs/ticker/";
 							var apiurl_end = "/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey=ubWPE9ZSd7GFvpwt5IeRfsl6atw_U798";
-							var ticker = items[0].Ticker;
+							var ticker = items[0].Ticker; var comp = items[i].Company; 
 							var final = apiurl + ticker + apiurl_end;
 							console.log('final' + final);
 							res1 = fetch(final)
@@ -47,10 +47,11 @@ http.createServer(function(req, res) {
 							.then (data => {
 							    d1 = JSON.parse(data); r = d1['results']; v = r[0]; v = v['c'];
 								console.log('v' + v);
-							    console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
-							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
-							res.write("<br>");
-							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v + "'); </script>");
+								console.log(comp + ticker + v);
+							    //console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
+							//res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v);
+							res.write("<br>R");
+							//res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + v + "'); </script>");
 							})
 							.catch (error => console.log('ERROR:' + error))
 						}
