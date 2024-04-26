@@ -54,8 +54,9 @@ http.createServer(function(req, res) {
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
-
+							var resultapi;
 							apivals(items[0].Ticker).then(result => {
+								resultapi = result;
 								//console.log('result' + result);
 								console.log(comp + ' ' + tick1);
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
@@ -64,6 +65,7 @@ http.createServer(function(req, res) {
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
 			
 							})
+							console.log('result api' + resultapi);
 						}
 					}
 					
