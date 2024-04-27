@@ -57,6 +57,7 @@ http.createServer(function(req, res) {
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
 							})
 							console.log('r1' + result);
+							res.write('result here');
 						}
 					}
 					
