@@ -48,7 +48,13 @@ http.createServer(function(req, res) {
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
-							var result = 0;
+							
+							let result;
+							    apivals(tick1).then((data) => {
+							       result = data;
+								    console.log('new test' + result);
+							    }   
+							console.log('after' + result);
 							apivals(items[0].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
