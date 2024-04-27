@@ -34,10 +34,8 @@ http.createServer(function(req, res) {
 
 				var dbo = db.db("Stocks");
 				var collection = dbo.collection("PublicCompanies");
-
 				var theQuery = {Company: input_search};
-				console.log("theQuery");
-				console.log(theQuery);
+
 				collection.find(theQuery).toArray(function(err, items) {
 					if (err) {
 						console.log(err);
@@ -48,12 +46,13 @@ http.createServer(function(req, res) {
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
+							
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
 							apivals(items[0].Ticker).then(result => {
-								console.log(comp + ' ' + tick1);
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("<br>");
+								res.write("<script>console.log('testing in apivals')</script>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
 							})
 							res.end();
