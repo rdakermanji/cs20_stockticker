@@ -54,13 +54,13 @@ http.createServer(function(req, res) {
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("<br>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
-								//res.end();
+								res.end();
 							})
 						}
 					}
 					
 					db.close();
-				res.end();
+				//res.end();
 				});
 				
 			});
