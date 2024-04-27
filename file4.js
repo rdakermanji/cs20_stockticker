@@ -55,7 +55,8 @@ http.createServer(function(req, res) {
 								res.write("<br>");
 								res.write("<script>console.log('testing in apivals')</script>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
-							})
+							}
+										     res.write(result + 'here'))
 							console.log('r1' + result);
 							res.write('result here');
 						}
