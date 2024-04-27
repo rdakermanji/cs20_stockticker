@@ -32,7 +32,7 @@ http.createServer(function(req, res) {
 					return console.log(err);
 				}
 
-				var dbo = db.db("Stocks");
+				var dbo = db.db("Stock");
 				var collection = dbo.collection("PublicCompanies");
 				var theQuery = {Company: input_search};
 
@@ -72,7 +72,7 @@ http.createServer(function(req, res) {
 					return console.log(err);
 				}
 
-				var dbo = db.db("Stocks");
+				var dbo = db.db("Stock");
 				var collection = dbo.collection("PublicCompanies");
 
 				var theQuery = {Ticker: input_search};
