@@ -89,7 +89,7 @@ http.createServer(function(req, res) {
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
-							
+							res.end()
 							apivals(items[i].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
@@ -97,7 +97,7 @@ http.createServer(function(req, res) {
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
 								//res.end();
 							})	
-							res.end();
+							//res.end();
 						}
 					}
 					db.close();
