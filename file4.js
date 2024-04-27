@@ -48,12 +48,7 @@ http.createServer(function(req, res) {
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
-							
-							const getActivity = async () => {
-								let jsonData = await apivals(tick1);
-								console.log(jsonData);
-							}
-							//console.log('after' + jsonData);
+
 							apivals(items[0].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
@@ -61,8 +56,6 @@ http.createServer(function(req, res) {
 								res.write("<script>console.log('testing in apivals')</script>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
 							})
-							console.log('r1' + result);
-							res.write('result here');
 						}
 					}
 					
