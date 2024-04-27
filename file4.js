@@ -49,12 +49,11 @@ http.createServer(function(req, res) {
 							
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
 							
-							let result;
-							    apivals(tick1).then((data) => {
-							       result = data;
-								    console.log('new test' + result);
-							    }   
-							console.log('after' + result);
+							const getActivity = async () => {
+								let jsonData = await apivals(tick1);
+								console.log(jsonData);
+							}
+							console.log('after' + jsonData);
 							apivals(items[0].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
