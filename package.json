@@ -2,9 +2,9 @@
   "name": "cs20stockticker",
   "version": "1.0.0",
   "description": "node app ",
-  "main": "file4.js",
+  "main": "final.js",
   "scripts": {
-  "start": "node file4.js"
+  "start": "node final.js"
 },
   "repository": {
   "type": "git",
