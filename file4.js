@@ -83,13 +83,15 @@ http.createServer(function(req, res) {
 						console.log(err);
 					} else {
 						for (i = 0; i < items.length; i++) {
-							var comp = items[i].Company; var tick1 = items[i].Ticker;
+							//var comp = items[i].Company; var tick1 = items[i].Ticker;
 							console.log("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price);
 							res.write("<br>");
 							res.write("<script language=javascript>console.log('Company: " + items[i].Company + ", Ticker: " + items[i].Ticker + ", Price: " + items[i].Price + "'); </script>");
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							//res.end()
+							var comp = items[i].Company; var tick1 = items[i].Ticker;
+							
 							apivals(items[i].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
