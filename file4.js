@@ -49,16 +49,16 @@ http.createServer(function(req, res) {
 							
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
 
-							let result = apivals(tick1);
+							let r1;// = apivals(tick1);
 							apivals(items[0].Ticker).then(result => {
-								result = result;
+								r1 = result;
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("<br>");
 								res.write("<script>console.log('testing in apivals')</script>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
 							})
-							console.log('result' + result);
+							console.log('result' + r1);
 						}
 					}
 					
