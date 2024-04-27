@@ -53,7 +53,7 @@ http.createServer(function(req, res) {
 								let jsonData = await apivals(tick1);
 								console.log(jsonData);
 							}
-							console.log('after' + jsonData);
+							//console.log('after' + jsonData);
 							apivals(items[0].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
