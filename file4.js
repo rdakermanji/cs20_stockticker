@@ -91,13 +91,14 @@ http.createServer(function(req, res) {
 							//response.Write("<script language=javascript>console.log(`'" & value & "'`); </script>")
 							//res.end()
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
+							console.log(comp + 'comp');
 							
 							apivals(items[i].Ticker).then(result => {
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
 								res.write("<br>");
 								res.write("<script language=javascript>console.log('API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result + "'); </script>");
-								//res.end();
+								res.end();
 							})	
 							//res.end();
 						}
