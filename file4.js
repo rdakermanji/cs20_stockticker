@@ -49,7 +49,7 @@ http.createServer(function(req, res) {
 							
 							var comp = items[i].Company; var tick1 = items[i].Ticker;
 
-							let result;
+							let result = apivals(tick1);
 							apivals(items[0].Ticker).then(result => {
 								result = result;
 								console.log("API VALS-> Company: " + comp + ", Ticker: " + tick1 + ", Price: " + result);
